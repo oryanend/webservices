@@ -13,7 +13,6 @@ if (isset($_GET['submit'])) {
     $searchTerm = $_GET['searchTerm'];
     $grupoMuscular = $_GET['grupoMuscular'];
 
-    // Construir a consulta SQL baseada nos termos de pesquisa
     $sql = "SELECT * FROM exercicios WHERE 1=1";
     if (!empty($searchTerm)) {
         $sql .= " AND nome LIKE '%$searchTerm%'";
@@ -22,10 +21,8 @@ if (isset($_GET['submit'])) {
         $sql .= " AND grupoMuscular LIKE '%$grupoMuscular%'";
     }
 
-    // Executar a consulta
     $result = $mysqli->query($sql);
 } else {
-    // Se nenhum formulário de pesquisa for enviado, recuperar todos os exercícios
     $result = $mysqli->query("SELECT * FROM exercicios");
 }
 ?>
